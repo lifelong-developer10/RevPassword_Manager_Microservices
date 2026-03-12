@@ -1,0 +1,13 @@
+package com.example.revpassword_manager;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class RevPasswordManagerApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(RevPasswordManagerApplication.class, args);
+    }
+
+}

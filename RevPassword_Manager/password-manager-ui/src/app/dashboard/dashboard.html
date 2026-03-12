@@ -1,0 +1,214 @@
+
+
+<div class="container mt-4">
+
+  <div class="glass">
+
+    <h3 class="mb-4">Dashboard</h3>
+
+    <!-- ================= STATS ================= -->
+
+    <div class="row g-3 mb-4">
+
+      <!-- Total -->
+      <div class="col-md-4">
+        <div class="stat-card">
+
+          <div class="stat-icon blue">
+            <i class="fa fa-lock"></i>
+          </div>
+
+          <div>
+            <h4>{{totalAccounts}}</h4>
+            <p>Total Accounts</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Strong -->
+      <div class="col-md-4">
+        <div class="stat-card">
+
+          <div class="stat-icon green">
+            <i class="fa fa-shield"></i>
+          </div>
+
+          <div>
+            <h4>{{strongPasswords}}</h4>
+            <p>Strong Passwords</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Weak -->
+      <div class="col-md-4">
+        <div class="stat-card">
+
+          <div class="stat-icon red">
+            <i class="fa fa-exclamation-triangle"></i>
+          </div>
+
+          <div>
+            <h4>{{weakPasswords}}</h4>
+            <p>Weak Passwords</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <!-- ================= MAIN ROW ================= -->
+
+    <div class="row g-4 align-items-stretch">
+
+      <!-- LEFT COLUMN -->
+      <div class="col-lg-6">
+
+        <div class="glass h-100">
+
+          <h4>Add Account</h4>
+
+          <form (ngSubmit)="addVault()">
+
+            <input class="form-control mb-2"
+                   placeholder="Account Name"
+                   [(ngModel)]="vault.accountName"
+                   name="accountName">
+
+            <input class="form-control mb-2"
+                   placeholder="Website URL"
+                   [(ngModel)]="vault.website"
+                   name="website">
+
+            <input class="form-control mb-2"
+                   placeholder="Username / Email"
+                   [(ngModel)]="vault.username"
+                   name="username">
+
+            <input class="form-control mb-2"
+                   placeholder="Password"
+                   [(ngModel)]="vault.password"
+                   name="password">
+
+            <select class="form-control custom-select"
+                    [(ngModel)]="vault.category"
+                    name="category">
+
+              <option value="">Select Category</option>
+              <option>Social</option>
+              <option>Banking</option>
+              <option>Work</option>
+              <option>Other</option>
+
+            </select>
+
+            <textarea class="form-control mb-2"
+                      placeholder="Notes"
+                      [(ngModel)]="vault.notes"
+                      name="notes"></textarea>
+
+            <div class="fav-check">
+
+              <input type="checkbox"
+                     id="fav"
+                     [(ngModel)]="vault.favorite"
+                     name="favorite">
+
+              <label for="fav">
+                ⭐ Mark as Favorite
+              </label>
+
+            </div>
+
+            <button class="btn btn-primary w-100">
+              Add Account
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+
+      <!-- RIGHT COLUMN -->
+      <div class="col-lg-6 d-flex flex-column gap-3">
+
+        <!-- Profile Security -->
+        <div class="glass small-security">
+
+          <div class="d-flex align-items-center gap-3">
+
+            <div class="stat-icon purple">
+              <i class="fa fa-user-shield"></i>
+            </div>
+
+            <div class="w-100">
+
+              <div class="d-flex justify-content-between">
+
+                <span class="title">Profile Security</span>
+                <span class="score">{{securityScore}}%</span>
+
+              </div>
+
+              <div class="progress-bg">
+
+                <div class="progress-fill"
+                     [style.width.%]="securityScore">
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Last Added -->
+        <div class="glass flex-fill">
+
+          <h4>Last Added Account</h4>
+
+          <div *ngIf="lastAccount" class="last-card">
+
+            <div class="last-header">
+
+              <div class="last-icon">
+                <i class="fa fa-globe"></i>
+              </div>
+
+              <div>
+                <h5>{{lastAccount.accountName}}</h5>
+                <small>{{lastAccount.website}}</small>
+              </div>
+
+            </div>
+
+            <hr>
+
+            <p><strong>Username:</strong> {{lastAccount.username}}</p>
+            <p><strong>Password:</strong> {{lastAccount.password}}</p>
+            <p><strong>Category:</strong> {{lastAccount.category}}</p>
+            <p><strong>Notes:</strong> {{lastAccount.notes || '—'}}</p>
+
+            <p>
+              <strong>Favorite:</strong>
+              {{lastAccount.favorite ? 'Yes ⭐' : 'No'}}
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

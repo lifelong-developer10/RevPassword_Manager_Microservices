@@ -1,0 +1,55 @@
+/* ===== PAGE BACKGROUND ===== */
+
+.profile-page {
+  min-height: 100vh;
+  padding: 30px;
+
+  background: radial-gradient(circle at 20% 20%, #1e3a8a, transparent 40%),
+              radial-gradient(circle at 80% 0%, #9333ea, transparent 40%),
+              radial-gradient(circle at 50% 80%, #0ea5e9, transparent 40%),
+              #020617;
+}
+
+
+/* ===== GLASS CONTAINER ===== */
+
+.glass {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 0 40px rgba(99,102,241,0.25);
+}
+
+
+/* ===== CARD STYLE ===== */
+
+.glass-card {
+  background: rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+}
+
+
+/* INPUTS */
+
+input {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: white;
+}
+
+input::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+
+/* BUTTON */
+
+.btn-primary {
+  background: linear-gradient(135deg,#6366f1,#8b5cf6);
+  border: none;
+}

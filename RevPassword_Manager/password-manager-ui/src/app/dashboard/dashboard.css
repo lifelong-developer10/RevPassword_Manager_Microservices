@@ -1,0 +1,138 @@
+/* Stats */
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+
+/* Circle Icons */
+
+.stat-icon {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+
+.stat-icon.blue {
+  border: 3px solid #6366f1;
+  box-shadow: 0 0 20px rgba(99,102,241,0.6);
+}
+
+.stat-icon.green {
+  border: 3px solid #22c55e;
+  box-shadow: 0 0 20px rgba(34,197,94,0.6);
+}
+
+.stat-icon.red {
+  border: 3px solid #ef4444;
+  box-shadow: 0 0 20px rgba(239,68,68,0.6);
+}
+
+
+/* Last Card */
+
+.last-card {
+  margin-top: 15px;
+}
+
+
+.last-header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+
+.last-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: linear-gradient(135deg,#6366f1,#8b5cf6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fav-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.fav-check input {
+  width: 18px;
+  height: 18px;
+  accent-color: #6366f1;
+  cursor: pointer;
+}
+.custom-select {
+  background: rgba(255,255,255,0.08);
+  color: #f1f5f9;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.custom-select option {
+  background: #0f172a;
+  color: #e2e8f0;
+}
+.fav-check label {
+  color: #e2e8f0;
+  cursor: pointer;
+}
+.small-security {
+  padding: 14px 18px;
+}
+
+
+.small-security .title {
+  font-size: 14px;
+  color: #cbd5e1;
+}
+
+
+.progress-bg {
+  width: 100%;
+  height: 6px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.15);
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+
+.progress-fill {
+  height: 100%;
+  border-radius: 10px;
+  background: linear-gradient(90deg,#22c55e,#6366f1);
+  transition: width 0.4s ease;
+}
+
+
+.stat-icon.purple {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 3px solid #8b5cf6;
+  box-shadow: 0 0 12px rgba(139,92,246,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.score {
+  font-weight: 600;
+  color: #a78bfa;
+  font-size: 13px;
+}
