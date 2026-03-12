@@ -14,7 +14,7 @@ public class PasswordStrengthController {
 
     @GetMapping("/strength")
     public PasswordStrengthResponse strength(
-            @RequestParam String password) {
+            @RequestParam("password") String password) {
 
         return strengthService.analyze(password);
     }

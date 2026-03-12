@@ -56,7 +56,7 @@ public class PasswordEntryController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable("id") Long id) {
         service.deleteEntry(id);
     }
 

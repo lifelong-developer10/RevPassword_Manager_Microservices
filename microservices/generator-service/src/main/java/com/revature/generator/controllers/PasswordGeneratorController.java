@@ -17,7 +17,7 @@ public class PasswordGeneratorController {
 
     @GetMapping("/generate")
     public PasswordGenerateResponse generate(
-            @RequestParam(defaultValue = "12") int length) {
+            @RequestParam(value = "length", defaultValue = "12") int length) {
 
         PasswordGenerateRequest request = new PasswordGenerateRequest();
         request.setLength(length);
