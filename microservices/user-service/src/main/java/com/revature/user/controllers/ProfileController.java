@@ -55,10 +55,14 @@ public class ProfileController {
 
         String username = auth.getName();
 
-        MasterUser updated =
-                authService.updateProfile(username, request);
+        MasterUser updatedUser = authService.updateProfile(username, request);
 
-        return ResponseEntity.ok(updated);
+        return ResponseEntity.ok(
+                Map.of("message", "Profile updated successfully",
+                        "name", updatedUser.getUsername(),
+                        "email", updatedUser.getEmail(),
+                        "phone", updatedUser.getPhone())
+        );
     }
     // ================= PASSWORD =================
 

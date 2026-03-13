@@ -121,8 +121,17 @@ public class AuthService {
                 MasterUser user = userRepository.findByUsername(username)
                                 .orElseThrow();
 
-                user.setEmail(req.getEmail());
-                user.setPhone(req.getPhone());
+                if (req.getUsername() != null && !req.getUsername().isBlank()) {
+                        user.setUsername(req.getUsername());
+                }
+                if (req.getEmail() != null && !req.getEmail().isBlank()) {
+                        user.setEmail(req.getEmail());
+                }
+                if (req.getPhone() != null && !req.getPhone().isBlank()) {
+                        user.setPhone(req.getPhone());
+                }
+//                user.setEmail(req.getEmail());
+//                user.setPhone(req.getPhone());
 
                 return userRepository.save(user);
         }

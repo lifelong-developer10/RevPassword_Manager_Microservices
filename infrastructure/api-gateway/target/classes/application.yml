@@ -55,8 +55,7 @@ spring:
           uri: lb://notification-service
           predicates:
             - Path=/api/otp/**
-          filters:
-            - JwtAuthenticationFilter
+
 
 eureka:
   client:
