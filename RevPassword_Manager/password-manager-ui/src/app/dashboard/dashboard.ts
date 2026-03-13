@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {  Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { VaultService } from '../core/services/vault.service';
 import { ProfileService } from '../core/services/profile.service';
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.html',
@@ -131,54 +131,63 @@ loadVaults() {
   // ================= ADD ACCOUNT =================
 addVault() {
 
+  if (
+    !this.vault.accountName ||
+    !this.vault.website ||
+    !this.vault.username ||
+    !this.vault.password ||
+    !this.vault.category
+  ) {
+
+    Swal.fire({
+      icon: 'warning',
+      title: 'Empty Fields',
+      text: 'All fields are required. Please fill all details.'
+    });
+
+    return; // stop API call
+  }
+
   this.vaultService.create(this.vault).subscribe({
 
     next: (res: any) => {
 
-      alert('Account Added Successfully');
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Account Added Successfully'
+      });
 
       // clear form
       this.vault = {
-        accountName: ['', Validators.required],
+        accountName: '',
         website: '',
-        username: ['', Validators.required],
-        password: ['', Validators.required],
-        category:['', Validators.required],
+        username: '',
+        password: '',
+        category: '',
         notes: '',
         favorite: false
       };
 
-     this.loadVaultSummary();
-           this.loadLastAccount();
-      this.cd.detectChanges();   // ⭐ ADD
-
+      this.loadVaultSummary();
+      this.loadLastAccount();
+      this.cd.detectChanges();
     },
 
-    error: (err: any) => console.error(err)
+    error: (err: any) => {
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Something went wrong while adding account'
+      });
+
+      console.error(err);
+    }
 
   });
 
 }
-
-  // ================= LAST ACCOUNT =================
-loadLastAccount() {
-
-  this.vaultService.getLast().subscribe({
-
-    next: (res: any) => {
-
-      console.log("Last Account:", res);
-
-this.lastAccount = res;
-this.cd.detectChanges();
-    },
-
-    error: (err: any) => console.error(err)
-
-  });
-
-}
-
   // ================= PASSWORD GENERATOR =================
 
   generatePassword(): void {
@@ -212,5 +221,32 @@ get securityScore(): number {
   goProfile(): void {
     this.router.navigate(['/profile']);
   }
+loadLastAccount() {
 
+  this.vaultService.getAll().subscribe({
+
+    next: (res: any[]) => {
+
+      if (res && res.length > 0) {
+
+        // get the last account added
+        this.lastAccount = res[res.length - 1];
+
+      } else {
+
+        this.lastAccount = null;
+
+      }
+
+      console.log("Last Account:", this.lastAccount);
+
+      this.cd.detectChanges();
+
+    },
+
+    error: (err: any) => console.error(err)
+
+  });
+
+}
 }
