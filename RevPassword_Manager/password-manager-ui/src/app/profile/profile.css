@@ -9,7 +9,9 @@
               radial-gradient(circle at 50% 80%, #0ea5e9, transparent 40%),
               #020617;
 }
-
+input {
+  margin-bottom: 15px;
+}
 
 /* ===== GLASS CONTAINER ===== */
 
