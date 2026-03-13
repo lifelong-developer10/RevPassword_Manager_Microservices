@@ -43,7 +43,7 @@ public class PasswordEntryController {
     @PutMapping("/{id}")
     public PasswordEntryResponse update(
             @RequestHeader("X-Logged-In-Username") String username,
-            @PathVariable Long id,
+            @PathVariable("id") Long id ,
             @Valid @RequestBody PasswordEntryRequest request)
             throws Exception {
 
