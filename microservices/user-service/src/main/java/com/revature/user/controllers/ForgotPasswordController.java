@@ -27,14 +27,14 @@ public class ForgotPasswordController {
  private final UserRepository userRepo;
 
     @GetMapping("/user-exists/{username}")
-    public boolean userExists(@PathVariable String username) {
+    public boolean userExists(@PathVariable("username") String username) {
 
         return userRepo.findByUsername(username).isPresent();
     }
 
     @GetMapping("/questions/{username}")
     public List<UserQuestionAnswer> getQuestions(
-            @PathVariable String username) {
+            @PathVariable("username")  String username) {
 
         return service.getUserQuestionsWithMask(username);
     }
